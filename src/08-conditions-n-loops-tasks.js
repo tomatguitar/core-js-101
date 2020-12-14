@@ -434,8 +434,13 @@ function getMatrixProduct(m1, m2) {
  *    [    ,   ,    ]]
  *
  */
-function evaluateTicTacToePosition(/* position */) {
-  throw new Error('Not implemented');
+function evaluateTicTacToePosition(position) {
+  const arr = Array.from(Array(3), () => Array(3).fill('-'));
+  return (arr
+    .map((row, i) => row.map((element, j) => position[i][j] || element))
+    .map((row) => row.join(''))
+    .join('')
+    .match(/(\w)(..(\1|.\1.)..\1|.\1.\1..$|\1\1(...)*$)/) || [])[1];
 }
 
 module.exports = {
